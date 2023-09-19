@@ -10,28 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_135101) do
-  create_table "recipes_food_tables", force: :cascade do |t|
-    t.string "quantity"
-    t.integer "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["recipe_id"], name: "index_recipes_food_tables_on_recipe_id"
-  end
-
-  create_table "recipes_tables", force: :cascade do |t|
-    t.string "name"
-    t.string "preparation_time"
-    t.string "cooking_time"
-    t.string "description"
-    t.boolean "public"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_foreign_key "recipes_food_tables", "recipes"
-
-ActiveRecord::Schema[7.0].define(version: 2023_09_19_135628) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_19_144003) do
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.string "measurement_unit"
@@ -41,6 +20,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_135628) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_foods_on_user_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "preparation_time"
+    t.string "cooking_time"
+    t.string "description"
+    t.boolean "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "recipes_food", force: :cascade do |t|
+    t.string "quantity"
+    t.integer "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["recipe_id"], name: "index_recipes_food_on_recipe_id"
+    t.index ["user_id"], name: "index_recipes_food_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,5 +58,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_19_135628) do
   end
 
   add_foreign_key "foods", "users"
-
+  add_foreign_key "recipes", "users"
+  add_foreign_key "recipes_food", "recipes"
+  add_foreign_key "recipes_food", "users"
 end
