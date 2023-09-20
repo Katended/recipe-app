@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :foods
+
   get 'public_recipes/index'
   get 'public_recipes/show'
   
