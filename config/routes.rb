@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :foods
+  resources :foods do
+   
+    delete :destroy, on: :member
+  end
 
   get 'public_recipes/index'
   get 'public_recipes/show'
