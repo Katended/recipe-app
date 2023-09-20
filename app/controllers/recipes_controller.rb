@@ -91,9 +91,8 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def generate_shopping_list
-    @recipe = Recipe.find(params[:id])     
+    @recipe = Recipe.find(params[:id])
 
     @required_foods = Food
       .joins(:recipe_foods)
@@ -101,10 +100,7 @@ class RecipesController < ApplicationController
       .where('recipe_foods.recipe_id' => @recipe.id, 'recipe_foods.quantity' => 0)
       .distinct
 
-      binding.pry
-
     @total_value = @required_foods.sum { |food| food.quantity.to_i * food.price.to_f }
-    
   end
 
   def destroy
