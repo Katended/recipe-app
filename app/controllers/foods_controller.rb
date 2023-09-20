@@ -1,6 +1,6 @@
 class FoodsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_food, only: [:show, :destroy]
+  before_action :set_food, only: %i[show destroy]
 
   def index
     @foods = Food.all
@@ -33,7 +33,7 @@ class FoodsController < ApplicationController
     params.require(:food).permit(:name, :measurement_unit, :price, :quantity)
   end
 
-  private 
+  private
 
   def set_food
     @food = Food.find(params[:id])
