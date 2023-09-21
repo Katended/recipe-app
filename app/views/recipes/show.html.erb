@@ -23,9 +23,8 @@
   </div>
   <p>Cooking Time: <%= @recipe.cooking_time %> minutes</p>
   <p>Description: <%= @recipe.description %></p>
-  <div class="recipe-show-button-container">
-    <button class='btn btn-primary' id='gen-btn'>Generate Shopping List</button>
-
+  <div class="recipe-show-button-container">   
+  <%= button_to 'Generate Shopping List', generate_shopping_list_recipe_path(@recipe), method: :get,class: 'btn btn-primary' %>
   <% if current_user == @recipe.user %>
       <%= link_to 'Add Ingredient', add_ingredient_recipe_path(@recipe), class: 'btn btn-primary' %>
     <% end %>
@@ -60,11 +59,3 @@
 </table>
 </div>
 <%= link_to 'Back to Recipes', recipes_path %>
-<%= render 'modal' %>
-<script>
-  const genBtn = document.querySelector('#gen-btn');
-  genBtn.addEventListener('click', () => {
-    const modal = document.querySelector('.shopping-list-modal');
-    modal.style.display = 'block';
-  });
-</script>

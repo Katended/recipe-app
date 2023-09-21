@@ -15,7 +15,7 @@
  */
 
 body {
-  background-color: rgb(159 110 206);
+  background-color: rgb(255, 255, 255);
 }
 
 .container {
@@ -110,7 +110,6 @@ body {
 button {
   font-size: larger;
   font-weight: 700;
-  font-style: oblique;
   background-color: aquamarine;
 }
 
