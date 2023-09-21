@@ -4,10 +4,8 @@ RSpec.describe RecipeFood, type: :model do
   before(:each) do
     @user1 = User.create(name: 'toyo', email: 'ade@gail.com', password: 'toyman', password_confirmation: 'toyman')
     @user2 = User.create(name: 'ade', email: 'toyo@gail.com', password: 'toyman1', password_confirmation: 'toyman1')
-
-   
   end
-  
+
   it 'title should be present' do
     food = Food.create(name: 'Onion', measurement_unit: 'kg', price: 2.99, quantity: 1, user: @user1)
     food.name = nil
