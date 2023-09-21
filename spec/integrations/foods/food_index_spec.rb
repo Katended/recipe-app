@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe 'Food Index Page', type: :system do
   before(:each) do
     @user1 = User.create(name: 'toyo', email: 'ade@gail.com', password: 'toyman', password_confirmation: 'toyman')
@@ -10,7 +9,6 @@ RSpec.describe 'Food Index Page', type: :system do
     @food1 = Food.create(name: 'Onion', measurement_unit: 'kg', price: 2.99, quantity: 1, user: @user1)
     @food2 = Food.create(name: 'Potato', measurement_unit: 'kg', price: 1.99, quantity: 2, user: @user2)
   end
-
 
   it 'User can see the foods page' do
     sign_in @user1
