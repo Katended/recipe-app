@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
+  root "users#index"
   # root "articles#index"
 
   resources :recipes do
@@ -13,6 +14,11 @@ Rails.application.routes.draw do
       get 'generate_shopping_list', to: 'recipes#generate_shopping_list'
       delete 'remove_food'
     end
+  end
+
+  resources :foods do
+   
+    delete :destroy, on: :member
   end
 
   get 'public_recipes/index'
