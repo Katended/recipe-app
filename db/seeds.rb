@@ -7,6 +7,12 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require 'faker'
+begin
+User.create(
+  name: "John Doe",
+  email: "2@ffs.d",
+  password: "password"
+)
 
 Recipe.create(
     name: "My Recipe",
@@ -29,6 +35,7 @@ Recipe.create(
     food_id: 1
   )
 
+
   20.times do
     User.create(
       name: Faker::Name.name,
@@ -36,9 +43,10 @@ Recipe.create(
       password: "password"
     )
   end
+  
   prng = Random.new
 
-  30.times do
+  20.times do
     Recipe.create(
       name: Faker::Name.name,
       preparation_time: "#{Faker::Number.number(digits: 2)} hours",
@@ -49,20 +57,26 @@ Recipe.create(
     )
   end
 
-  30.times do
+  20.times do
     Food.create(
       name: Faker::Name.name,
       measurement_unit: "kg",
-      price: Faker::Number.decimal(l_digits: 2)
+      price: Faker::Number.decimal(l_digits: 2),
+      quantity: Faker::Number.number(digits: 2),
+      user_id: prng.rand(1..20)    
     )
   end
 
-  30.times do
+  20.times do
     RecipeFood.create(
       quantity: Faker::Number.number(digits: 2),
-      recipe_id: prng.rand(1..30),
-      food_id: prng.rand(1..30)
+      recipe_id: prng.rand(1..20),
+      food_id: prng.rand(1..20)     
     )
   end
 
   puts "Data Seeded."
+
+rescue ActiveRecord::RecordInvalid => e
+  puts "Validation error occurred: #{e.message}"
+end
