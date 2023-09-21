@@ -1,10 +1,12 @@
 <h2>This is foods page</h2>
 
-<%= link_to 'Add food', new_food_path, class: 'nav-link' %>
+<button class="add-food">
+  <%= link_to 'Add food', new_food_path, class: 'nav-link' %>
+</button>
 
 <div>
   <% if @foods.any? %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Name</th>
