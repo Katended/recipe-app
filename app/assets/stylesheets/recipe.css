@@ -1,23 +1,23 @@
-.recipes-container ul { 
+.recipes-container ul {
   display: flex;
 }
 
 article {
-  display:flex;
-  justify-content:left;
+  display: flex;
+  justify-content: left;
   border: 1px solid #ccc;
   box-shadow: 0 0 5px #ccc;
   margin-bottom: 20px;
   padding: 20px;
-  flex-grow:1; 
-
+  flex-grow: 1;
 }
+
 article > div {
   padding-left: 5px;
 }
 
-.recipes-container li { 
-  width:100%;
+.recipes-container li {
+  width: 100%;
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
@@ -26,13 +26,14 @@ article > div {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 0 5px #ccc;
-  flex-grow:1; 
- 
+  flex-grow: 1;
 }
+
 .recipes-container .recipe-name {
   text-decoration: none;
   color: #000;
 }
+
 .recipes-container > li > div {
   display: flex;
 }
