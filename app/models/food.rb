@@ -8,7 +8,7 @@ class Food < ApplicationRecord
   validates :measurement_unit, presence: true
   validates :quantity, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
- 
+  
   private
   def set_default_price
     self.price ||= 0
