@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = current_user.recipes
+    binding.pry
   end
 
   def new
@@ -61,17 +62,24 @@ class RecipesController < ApplicationController
   def remove_food
     @recipe = Recipe.find_by(id: params[:id])
     @recipe_food = RecipeFood.find_by(food_id: params[:food_id], recipe_id: params[:id])
+    
+    begin
 
-    if current_user == @recipe.user
-      RecipeFood.delete(@recipe_food)
-      flash[:notice] = 'Ingredient removed successfully.'
-    else
-      flash[:alert] = 'You do not have permission to remove ingredients from this recipe.'
+      if current_user == @recipe.user
+        RecipeFood.delete(@recipe_food)
+        binding.pry
+        flash[:notice] = 'Ingredient removed successfully.'
+      else
+        binding.pry
+        flash[:alert] = 'You do not have permission to remove ingredients from this recipe.'
+      end
+
+      redirect_to @recipe
+
+    rescue StandardError => e
+      flash[:notice] = "An error occurred: #{e.message}"
     end
 
-    redirect_to @recipe
-  rescue StandardError => e
-    flash[:notice] = "An error occurred: #{e.message}"
   end
 
   def public_recipes
@@ -82,12 +90,19 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
-    if @recipe.save
-      flash[:notice] = 'Recipe created successfully.'
-      redirect_to recipe_path(@recipe)
-    else
-      flash.now[:alert] = 'Recipe creation failed.'
-      redirect_to new_recipe_url
+    binding.pry
+    begin        
+      if @recipe.save
+        flash[:notice] = 'Recipe created successfully.'
+        redirect_to recipe_path(@recipe)
+        binding.pry
+      else
+        flash.now[:alert] = 'Recipe creation failed.'
+        binding.pry
+        redirect_to new_recipe_url
+      end
+    rescue StandardError => e
+      flash[:notice] = "An error occurred: #{e.message}"
     end
   end
 
