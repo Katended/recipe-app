@@ -1,17 +1,16 @@
 <h1>My Recipes</h1>
 
-<ul class="recipes-container">
   <% @recipes.each do |recipe| %>
-    <li>
+  <article>    
       <div>
-        <%= link_to recipe.name, recipe, class:'recipe-name' %>
-        <%= button_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } if recipe.user == current_user %>
+      <p><%= link_to recipe.name, recipe, class:'recipe-name' %></p>
+      <p><%= button_to 'Remove', recipe, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Are you sure?' } if recipe.user == current_user %></p>
       </div>
        <div>
-        <%= recipe.description %>
+        <span><%= recipe.description %></span>
        </div>
-    </li>
+   </article>
   <% end %>
-</ul>
+
 <%# add a new recipe %>
-<%= link_to 'New Recipe', new_recipe_path, class:'btn' %>
+<%= link_to 'New Recipe', new_recipe_path %>
