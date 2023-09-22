@@ -12,8 +12,8 @@ class RecipesController < ApplicationController
   end
 
   def add_ingredient
-    @recipe = Recipe.joins(:recipe_foods).select('recipes.*,recipe_foods.quantity').find(params[:id])
-
+     @recipe = Recipe.left_outer_joins(:recipe_foods).select('recipes.*,recipe_foods.quantity').find(params[:id])
+    binding.pry
     if current_user == @recipe.user
       @foods_not_in_recipe = Food.where.not(id: @recipe.foods.pluck(:id))
 
