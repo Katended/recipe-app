@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
 
   def destroy
     if @food.destroy
-      redirect_to foods_path, flash[:notice] = 'Food item was successfully deleted.'
+      redirect_to foods_path, notice: 'Food item was successfully created.'
     else
       flash.now[:alert] = 'Food item could not be deleted.'
       render :show
