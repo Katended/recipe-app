@@ -11,31 +11,13 @@ RSpec.describe 'Recipe Index Page', type: :system do
 
   it 'User can see the Recipe page' do
     sign_in @user1
-    visit recipe_path
+    visit recipes_path
     expect(page).to have_content('Recipe 1')
   end
 
-  #   it 'User1 can see food items' do
-  #     sign_in @user1
-  #     visit foods_path
-  #     expect(page).to have_content('Onion')
-  #   end
-
-  #   it 'User2 can see food items' do
-  #     sign_in @user2
-  #     visit foods_path
-  #     expect(page).to have_content('Potato')
-  #   end
-
-  #   it 'User can see the "Add food" link' do
-  #     sign_in @user1
-  #     visit foods_path
-  #     expect(page).to have_link('Add food', href: new_food_path)
-  #   end
-
-  #   it 'User can see the "Delete" button for their own food items' do
-  #     sign_in @user1
-  #     visit foods_path
-  #     expect(page).to have_button('Delete', count: 1)
-  #   end
+  it 'User can see the "Delete" button for their own  recipe items' do
+    sign_in @user1
+    visit recipes_path
+    expect(page).to have_button('Remove', count: 1)
+  end
 end

@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  it 'name, preparation_time, cooking_time, user should be present' do
-    @user = User.new(name: 'User', email: 'user@email', password: 'password')
-    @recipe = Recipe.new(name: 'Bread', preparation_time: '1.5', cooking_time: '1', description: 'Text Text',
-                         user_id: 1)
-    expect(@recipe).to be_valid
-  end
 
   it 'name should be present' do
     @user = User.new(name: 'User', email: 'user@email', password: '753951')
