@@ -97,15 +97,13 @@ class RecipesController < ApplicationController
 
   def generate_shopping_list
     @recipe = Recipe.find(params[:id])
-
-    @required_foods = Food
-      .joins(:recipe_foods)
-      .select('foods.*, recipe_foods.quantity')
-      .where('recipe_foods.recipe_id' => @recipe.id, 'recipe_foods.quantity' => 0)
-      .distinct
-
+  
+    # Select all the foods associated with the current recipe through recipe_foods
+    @required_foods = @recipe.recipe_foods.map(&:food)
+  
     @total_value = @required_foods.sum { |food| food.quantity.to_i * food.price.to_f }
   end
+  
 
   def destroy
     @recipe = Recipe.find(params[:id])
