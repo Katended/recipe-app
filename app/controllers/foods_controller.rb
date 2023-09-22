@@ -3,7 +3,7 @@ class FoodsController < ApplicationController
   before_action :set_food, only: %i[show destroy]
 
   def index
-    @foods = Food.all
+    @foods = current_user.foods
   end
 
   def create
@@ -22,7 +22,7 @@ class FoodsController < ApplicationController
 
   def destroy
     if @food.destroy
-      redirect_to foods_path, notice: 'Food item was successfully deleted.'
+      redirect_to foods_path, flash[:notice] = 'Food item was successfully deleted.'
     else
       flash.now[:alert] = 'Food item could not be deleted.'
       render :show
