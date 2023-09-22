@@ -9,7 +9,6 @@ RSpec.describe 'User Creation', type: :system do
   it 'allows a user to sign up and then sign in' do
     visit root_path
 
-
     # Log in the user
     fill_in 'Email', with: 'ade@gail.com'
     fill_in 'Password', with: 'toyman'
