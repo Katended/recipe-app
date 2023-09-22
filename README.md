@@ -5,7 +5,6 @@
 </div>
 
 <!-- TABLE OF CONTENTS -->
-
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
@@ -68,20 +67,24 @@ To get a local copy up and running, follow these steps.
 ### Prerequisites
 In order to run this project you need:
   * A basic understanding of Ruby, Rails and Git
-### Usage
-1. Install Ruby
-2. Install Rails
-3. Clone this repo
+### Setup
+
 ```
 git clone https://github.com/Katended/recipe-app.git
 ```
+### Install
 
+1. Install Ruby
+2. Install Rails
+3. Clone this repo
+
+### Usage
 To run the project, execute the following command:
 
 ```
   rails s
 ```
-
+### Run Tests
 To run tests, run the following command:
 
 ```
