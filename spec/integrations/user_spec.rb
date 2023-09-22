@@ -4,7 +4,6 @@ RSpec.describe 'User Creation', type: :system do
   before(:each) do
     @user1 = User.create(name: 'toyo', email: 'ade@gail.com', password: 'toyman', password_confirmation: 'toyman')
     @user2 = User.create(name: 'ade', email: 'toyo@gail.com', password: 'toyman1', password_confirmation: 'toyman1')
-
   end
 
   it 'allows a user to sign up and then sign in' do
@@ -19,6 +18,4 @@ RSpec.describe 'User Creation', type: :system do
     # Check that the user is signed in after logging in
     expect(page).to have_content('Signed in successfully')
   end
-
-  
 end
