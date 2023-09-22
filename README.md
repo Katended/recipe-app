@@ -10,6 +10,7 @@
 
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
   <!-- - [🚀 Live Demo](#live-demo) -->
 - [💻 Getting Started](#getting-started)
@@ -30,11 +31,12 @@
 **Recipe App:** This project employs a Ruby on Rails app with SQL lite. It allows users to add food, recipes, and users can view recipe dtails, usrs can also see public recipes. Ensured accurate migrations and data relationships as per ERD diagram. 📚
 
 ## 🛠 Built With <a name="built-with"></a>
-
+## Tech Stack <a name="tech-stack"></a>
   <ul>
     <li>Ruby</li>
     <li>Ruby On Rails</li>
     <li>SQLite</li>
+    <li>Bootstrap</li>
   </ul>
 
 <!-- Features -->
@@ -55,6 +57,10 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## 🚀 Live Demo <a name="built-with"></a>
+
+Coming soon!
+
 ## Getting Started
 
 To get a local copy up and running, follow these steps.
@@ -64,8 +70,8 @@ In order to run this project you need:
   * A basic understanding of Ruby, Rails and Git
 ### Usage
 1. Install Ruby
-1. Install Rails
-2. Clone this repo
+2. Install Rails
+3. Clone this repo
 ```
 git clone https://github.com/Katended/recipe-app.git
 ```
