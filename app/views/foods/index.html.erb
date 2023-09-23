@@ -1,0 +1,34 @@
+<h2>This is foods page</h2>
+
+<button class="add-food">
+  <%= link_to 'Add food', new_food_path, class: 'nav-link' %>
+</button>
+
+<div>
+  <% if @foods.any? %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Measurement Unit</th>
+          <th>Unit Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food| %>
+          <tr>
+            <td><%= food.name %></td>
+            <td><%= food.measurement_unit %></td>
+            <td><%= food.price %></td>
+            <td>
+              <%= button_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>No foods available.</p>
+  <% end %>
+</div>
